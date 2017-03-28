@@ -31,6 +31,7 @@ for i in range(1000) : #Number of steps.
 ## Evaluating Our Model
 
 #compare our model's label(y) to correct label(y_), correct_prediction is list of Boolean.
-correct_prediction = tf.equal(tf.argmax(y,1),tf.argmax(y_,1)) #I cannot understand why we use argmax(y,1) <- Let's know about it later. 
+#argmax(vector,rank) Returns the index with the largest value across rank of a tensor.
+correct_prediction = tf.equal(tf.argmax(y,1),tf.argmax(y_,1))
 accuracy = tf.reduce_mean(tf.cast(correct_prediction,"float")) #reduce_mean -> mean from list
 print (sess.run(accuracy,feed_dict={x:mnist.test.images,y_ : mnist.test.labels}))
